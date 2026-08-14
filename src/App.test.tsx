@@ -29,6 +29,7 @@ describe('App 主链路', () => {
     await user.click(screen.getByRole('button', { name: /假装没看见/ }));
     expect(screen.getByText(/像推开一件和自己无关的事/)).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: '继续' }));
-    expect(screen.getByText(/凌玲/)).toBeInTheDocument();
+    // 进入凌玲 QTE 节点：叙事文案与来电头像两处含“凌玲”
+    expect(screen.getAllByText(/凌玲/).length).toBeGreaterThan(0);
   });
 });

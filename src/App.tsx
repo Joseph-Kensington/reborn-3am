@@ -2,6 +2,7 @@ import { useGameEngine } from './engine/useGameEngine';
 import { script } from './data/script';
 import { TitleScreen } from './components/TitleScreen';
 import { NarrativeScreen } from './components/NarrativeScreen';
+import { QTEOverlay } from './components/QTEOverlay';
 
 export default function App() {
   const { state, dispatch } = useGameEngine();
@@ -14,16 +15,7 @@ export default function App() {
   if (!node) return null;
 
   if (node.type === 'qte') {
-    // Task 6 替换为 QTEOverlay
-    return (
-      <NarrativeScreen
-        node={{ ...node, type: 'narration' }}
-        stats={state.stats}
-        feedback={null}
-        onAdvance={() => dispatch({ type: 'QTE_RESULT', success: false })}
-        onChoose={() => undefined}
-      />
-    );
+    return <QTEOverlay node={node} onResult={(success) => dispatch({ type: 'QTE_RESULT', success })} />;
   }
 
   return (
