@@ -23,7 +23,10 @@ export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: 
         className="pointer-events-none absolute inset-0 transition-opacity duration-1000"
         style={{ boxShadow: 'inset 0 0 120px 60px rgba(0,0,0,0.9)', opacity: vignette }}
       />
-      <div className={`max-w-2xl whitespace-pre-line text-center text-lg leading-loose md:text-2xl md:leading-loose ${tremor ? 'animate-pulse' : ''}`}>
+      <div
+        key={node.id + (feedback !== null ? '-fb' : '')}
+        className={`fade-swap font-narrative max-w-2xl whitespace-pre-line text-center text-lg leading-loose md:text-2xl md:leading-loose ${tremor ? 'animate-pulse' : ''}`}
+      >
         {shownText}
       </div>
       <div className="mt-12 flex justify-center">

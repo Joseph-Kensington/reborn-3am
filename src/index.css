@@ -2,9 +2,62 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  /* 色彩纪律：近黑暖色底 + 纯白文字 + 唯一强调色（仅交互态），平涂无渐变 */
+  --bg: #0a0a00;
+  --panel: #0f0f0f;
+  --ink: #ffffff;
+  --accent: #3898ec;
+  /* 三声部字体系统：叙事宋体 / UI 黑体 / 数据等宽 */
+  --font-narrative: 'Songti SC', 'Noto Serif SC', 'STSong', 'SimSun', serif;
+  --font-ui: -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-data: ui-monospace, 'SF Mono', 'Menlo', 'PingFang SC', monospace;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
-  background: #0b0b10;
-  color: #e8e6e3;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-ui);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-narrative { font-family: var(--font-narrative); }
+.font-data { font-family: var(--font-data); }
+
+/* 电影胶片颗粒：全屏噪点层 + 分段抖动，统一"梦境"质感 */
+.film-grain {
+  position: fixed;
+  inset: -100%;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  animation: grain 0.8s steps(4) infinite;
+}
+
+@keyframes grain {
+  0% { transform: translate3d(0, 0, 0); }
+  25% { transform: translate3d(-2%, 1%, 0); }
+  50% { transform: translate3d(1%, -2%, 0); }
+  75% { transform: translate3d(-1%, 2%, 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}
+
+/* 反白选中 */
+::selection { background: var(--ink); color: var(--bg); }
+
+/* 隐藏滚动条，保持画面干净 */
+::-webkit-scrollbar { display: none; }
+* { scrollbar-width: none; }
+
+/* 克制的动效纪律：文本仅做透明度交叉淡化 */
+.fade-swap {
+  animation: fade-swap 0.5s ease;
+}
+
+@keyframes fade-swap {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

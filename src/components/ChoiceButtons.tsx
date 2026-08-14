@@ -24,7 +24,7 @@ export function ChoiceButtons({ choices, onChoose }: Props) {
           type="button"
           disabled={locked}
           onClick={() => handleClick(i)}
-          className="rounded-lg border border-white/25 px-6 py-4 text-left text-base leading-relaxed transition-colors hover:border-white/60 hover:bg-white/5 disabled:opacity-50 md:text-lg"
+          className="rounded-lg border border-white/25 px-6 py-4 text-left text-base leading-relaxed transition-colors hover:border-[#3898ec] hover:bg-white/5 disabled:opacity-50 md:text-lg"
         >
           {choice.label}
         </button>

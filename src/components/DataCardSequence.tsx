@@ -23,7 +23,7 @@ export function DataCardSequence({ node, onDone }: Props) {
     <div className="flex h-full flex-col items-center justify-center bg-black px-6">
       <div
         className={`max-w-2xl whitespace-pre-line text-center leading-loose ${
-          isLast ? 'text-2xl md:text-4xl' : 'text-lg opacity-90 md:text-2xl'
+          isLast ? 'font-narrative text-2xl md:text-4xl' : 'text-lg opacity-90 md:text-2xl'
         }`}
       >
         {cards[index]}
@@ -35,7 +35,7 @@ export function DataCardSequence({ node, onDone }: Props) {
       >
         继续
       </button>
-      <div className="mt-6 text-xs opacity-30">
+      <div className="font-data mt-6 text-xs opacity-30">
         {index + 1} / {cards.length}
       </div>
     </div>

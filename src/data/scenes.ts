@@ -9,12 +9,16 @@ export const SCENES = [
 
 export type SceneId = (typeof SCENES)[number];
 
-/** 插画缺失时的 CSS 渐变兜底（Task 10 接入插画后作为底层） */
+/**
+ * 场景底色（平涂，无渐变——电影感纪律）；
+ * Task 10 接入插画后作为图片下层兜底。
+ * 色阶来自参照palette的明暗梯：#060500 / #0a0a00 / #0f0f0f。
+ */
 export const SCENE_GRADIENT: Record<SceneId, string> = {
-  'bedroom-night': 'linear-gradient(180deg, #14121d 0%, #0b0b10 100%)',
-  'bedtail-3am': 'linear-gradient(180deg, #0d1020 0%, #05060c 100%)',
-  'morning-pain': 'linear-gradient(180deg, #1d1a17 0%, #0e0c0a 100%)',
-  'wash-loop': 'linear-gradient(180deg, #12161a 0%, #0a0c0e 100%)',
-  'night-alarm': 'linear-gradient(180deg, #100e16 0%, #060509 100%)',
-  datacard: 'linear-gradient(180deg, #000000 0%, #000000 100%)',
+  'bedroom-night': '#0a0a00',
+  'bedtail-3am': '#060500',
+  'morning-pain': '#0f0f0f',
+  'wash-loop': '#0a0a00',
+  'night-alarm': '#060500',
+  datacard: '#000000',
 };
