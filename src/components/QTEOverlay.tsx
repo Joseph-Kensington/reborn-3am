@@ -31,8 +31,18 @@ export function QTEOverlay({ node, onResult }: Props) {
   };
 
   return (
-    <div className="flex h-full flex-col items-center justify-center px-6" style={{ background: gradient }}>
-      <div className="max-w-2xl whitespace-pre-line text-center text-lg leading-loose opacity-80 md:text-xl">
+    <div
+      className="flex h-full flex-col items-center justify-center px-6"
+      style={{
+        backgroundImage: `url(/images/${node.scene}.png), ${gradient}`,
+        backgroundSize: 'cover, cover',
+        backgroundPosition: 'center, center',
+      }}
+    >
+      <div
+        className="max-w-2xl whitespace-pre-line text-center text-lg leading-loose opacity-80 md:text-xl"
+        style={{ textShadow: '0 2px 24px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.9)' }}
+      >
         {node.text}
       </div>
       <div className={`mt-12 flex flex-col items-center gap-6 ${shaking ? 'animate-bounce' : ''}`}>

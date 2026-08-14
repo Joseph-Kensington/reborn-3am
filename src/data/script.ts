@@ -192,14 +192,14 @@ export const script: Script = {
   // ========== 第三幕 · 惊醒 ==========
   'a3-n1': {
     id: 'a3-n1',
-    scene: 'bedroom-night',
+    scene: 'wakeup',
     type: 'narration',
     text: '你猛然惊醒。\n凌晨 3:04。\n台灯下，床尾坐着一个沉默的背影——是子君，正在泵奶。\n和梦里，一模一样。',
     next: 'a3-n2',
   },
   'a3-n2': {
     id: 'a3-n2',
-    scene: 'bedroom-night',
+    scene: 'wakeup',
     type: 'choice',
     text: '',
     choices: [

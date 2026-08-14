@@ -4,6 +4,7 @@ export const SCENES = [
   'morning-pain',
   'wash-loop',
   'night-alarm',
+  'wakeup',
   'datacard',
 ] as const;
 
@@ -20,5 +21,6 @@ export const SCENE_GRADIENT: Record<SceneId, string> = {
   'morning-pain': '#0f0f0f',
   'wash-loop': '#0a0a00',
   'night-alarm': '#060500',
+  wakeup: '#060500',
   datacard: '#000000',
 };

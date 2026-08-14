@@ -17,7 +17,14 @@ export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: 
   const shownText = feedback ?? node.text;
 
   return (
-    <div className="relative flex h-full flex-col items-center justify-center px-6" style={{ background: gradient }}>
+    <div
+      className="relative flex h-full flex-col items-center justify-center px-6"
+      style={{
+        backgroundImage: `url(/images/${node.scene}.png), ${gradient}`,
+        backgroundSize: 'cover, cover',
+        backgroundPosition: 'center, center',
+      }}
+    >
       {/* 疲惫暗角：疲惫值越高越重 */}
       <div
         className="pointer-events-none absolute inset-0 transition-opacity duration-1000"
@@ -26,6 +33,7 @@ export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: 
       <div
         key={node.id + (feedback !== null ? '-fb' : '')}
         className={`fade-swap font-narrative max-w-2xl whitespace-pre-line text-center text-lg leading-loose md:text-2xl md:leading-loose ${tremor ? 'animate-pulse' : ''}`}
+        style={{ textShadow: '0 2px 24px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.9)' }}
       >
         {shownText}
       </div>

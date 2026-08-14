@@ -4,8 +4,20 @@ interface Props {
 
 export function TitleScreen({ onStart }: Props) {
   return (
-    <div className="relative flex h-full flex-col items-center justify-center gap-8 bg-[#0b0b10] px-6 text-center">
-      <h1 className="font-narrative text-3xl leading-relaxed md:text-5xl">重生之我在凌晨三点奶娃娃</h1>
+    <div
+      className="relative flex h-full flex-col items-center justify-center gap-8 bg-[#0b0b10] px-6 text-center"
+      style={{
+        backgroundImage: 'url(/images/title.png), linear-gradient(180deg,#0b0b10,#000)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+      }}
+    >
+      <h1
+        className="font-narrative text-3xl leading-relaxed md:text-5xl"
+        style={{ textShadow: '0 2px 24px rgba(0,0,0,0.95), 0 0 8px rgba(0,0,0,0.9)' }}
+      >
+        重生之我在凌晨三点奶娃娃
+      </h1>
       <p className="text-base opacity-70 md:text-lg">—— 一位工程师的梦</p>
       <button
         type="button"
