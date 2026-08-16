@@ -1,3 +1,5 @@
+import type { SfxId, SfxRef } from '../audio/sfx';
+
 export type StatKey = 'fatigue' | 'pain';
 export type Stats = Record<StatKey, number>;
 
@@ -5,6 +7,10 @@ export interface Choice {
   label: string;
   feedback?: string;
   effects?: Partial<Stats>;
+  /** 选择该选项时触发：循环音成为当前底声，一次性音效立即播放，'stop' 停止当前循环 */
+  sfx?: SfxRef;
+  /** 反馈文案展示后延迟跟出的一次性音效（如泵声先起、哭声后跟） */
+  feedbackSfx?: SfxId;
   next: string;
 }
 
@@ -26,6 +32,8 @@ export interface GameNode {
   choices?: Choice[];
   qte?: QTEDef;
   cards?: string[];
+  /** 节点进入时触发音效（语义同 Choice.sfx） */
+  sfx?: SfxRef;
   next?: string;
 }
 

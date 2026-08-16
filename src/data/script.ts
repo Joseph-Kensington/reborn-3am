@@ -4,6 +4,8 @@ import type { Script } from '../engine/types';
  * 《重生之我在凌晨三点奶娃娃》全量剧本。
  * 改文案、调节点、换顺序只动本文件；改完跑 `npm run validate`。
  * 文案规范：全中文；不使用斜体；\n 为段落分隔。
+ * 音效标注：节点/选项可加 sfx（取值见 src/audio/sfx.ts，'stop' 停止当前循环底声）；
+ * 选项可另加 feedbackSfx，在反馈文案展示后延迟跟出一次性音效。
  */
 export const script: Script = {
   // ========== 第一幕 · 丈夫 ==========
@@ -11,6 +13,7 @@ export const script: Script = {
     id: 'a1-n1',
     scene: 'bedroom-night',
     type: 'narration',
+    sfx: 'night-ambience',
     text: '晚上 11 点，工程师陈俊生加班回到家。\n妻子罗子君已经睡了。产后第四个月，她瘦了一圈。\n床头放着吸奶器。水盆里，泡着拆开的零件。',
     next: 'a1-n2',
   },
@@ -62,6 +65,7 @@ export const script: Script = {
     id: 'a1-n4',
     scene: 'bedroom-night',
     type: 'choice',
+    sfx: 'alarm',
     text: '凌晨 3 点，罗子君的闹钟响了，你也被吵醒，心中有种怒气。\n子君轻手轻脚地起床，摸黑拿起了吸奶器。',
     choices: [
       {
@@ -102,12 +106,15 @@ export const script: Script = {
         label: '标准档——吸得干净，但声音大',
         feedback: '嗡嗡声在夜里格外清楚。十分钟后，宝宝哭了。\n你拔掉吸奶器去哄，奶洒了一点在衣服上。\n好不容易把宝宝哄睡了，接着又回来吸奶，但这一次乳头开始微微隐痛...',
         effects: { fatigue: 2 },
+        sfx: 'pump-standard',
+        feedbackSfx: 'baby-cry',
         next: 'a2-s2-n1',
       },
       {
         label: '静音档——安静，但吸不干净',
         feedback: '你盯着天花板，坐了三十分钟。\nAPP 显示：60ml。昨天这个时候是 90ml。\n你盯着那个数字，心一点一点往下沉，焦虑...',
         effects: { fatigue: 1 },
+        sfx: 'pump-silent',
         next: 'a2-s2-n1',
       },
     ],
@@ -143,6 +150,7 @@ export const script: Script = {
     id: 'a2-s3-n1',
     scene: 'wash-loop',
     type: 'choice',
+    sfx: 'stop',
     text: '上午 10 点，又泵完了一次奶。\n法兰、阀门、隔膜、奶杯、导管、底座——6 个吸奶器零件等着洗。',
     choices: [
       {
@@ -185,6 +193,7 @@ export const script: Script = {
     id: 'a2-s4-n1',
     scene: 'night-alarm',
     type: 'narration',
+    sfx: 'night-ambience',
     text: '深夜 11 点，最后一次。\n你靠在床头，累到连抬手的力气都没有。\n你拿起手机，再次设好明天凌晨 3:00 的闹钟。\n屏幕的光照在脸上。\n明天，你的24H仍然以宝宝为中心而运转，会和今天一模一样的疲惫么？',
     next: 'a3-n1',
   },
@@ -214,6 +223,7 @@ export const script: Script = {
     id: 'a3-n3',
     scene: 'datacard',
     type: 'datacard',
+    sfx: 'stop',
     text: '',
     cards: [
       '哺乳期妈妈平均每 2–3 小时泵一次奶，每天 6–8 次',

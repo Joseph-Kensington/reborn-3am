@@ -6,3 +6,6 @@ export const DISCUSSION_QUESTIONS = [
   '玩之前，你猜对了一位妈妈每天要拆洗几次吗？',
   '如果你是罗子君，你最想对我们产品说的一句话是什么？',
 ];
+
+/** 音效开关：false 则全局无声（无声也可完整通关） */
+export const AUDIO_ENABLED = true;

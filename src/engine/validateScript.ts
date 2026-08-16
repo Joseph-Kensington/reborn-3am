@@ -1,8 +1,11 @@
 import { SCENES } from '../data/scenes';
+import { SFX } from '../audio/sfx';
 import type { Script } from './types';
 import { START_NODE } from './types';
 
 const SCENE_SET = new Set<string>(SCENES);
+const SFX_REFS = new Set<string>([...Object.keys(SFX), 'stop']);
+const SFX_IDS = new Set<string>(Object.keys(SFX));
 
 function exitsOf(node: Script[string]): string[] {
   const exits: string[] = [];
@@ -21,6 +24,17 @@ export function validateScript(script: Script, startId: string = START_NODE): st
   for (const node of Object.values(script)) {
     if (!SCENE_SET.has(node.scene)) {
       errors.push(`节点 ${node.id} 使用未登记场景: ${node.scene}（合法值: ${(SCENES as readonly string[]).join(', ')}）`);
+    }
+    if (node.sfx && !SFX_REFS.has(node.sfx)) {
+      errors.push(`节点 ${node.id} 使用未登记音效: ${node.sfx}（合法值: ${[...SFX_REFS].join(', ')}）`);
+    }
+    for (const c of node.choices ?? []) {
+      if (c.sfx && !SFX_REFS.has(c.sfx)) {
+        errors.push(`节点 ${node.id} 的选项「${c.label}」使用未登记音效: ${c.sfx}`);
+      }
+      if (c.feedbackSfx && !SFX_IDS.has(c.feedbackSfx)) {
+        errors.push(`节点 ${node.id} 的选项「${c.label}」使用未登记 feedbackSfx: ${c.feedbackSfx}（须为已登记音效，不能用 'stop'）`);
+      }
     }
     if (node.type === 'datacard' && (!node.cards || node.cards.length === 0)) {
       errors.push(`datacard 节点 ${node.id} 缺少非空 cards`);
