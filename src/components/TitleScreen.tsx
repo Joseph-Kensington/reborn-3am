@@ -18,7 +18,7 @@ export function TitleScreen({ onStart }: Props) {
       >
         重生之我在凌晨三点奶娃娃
       </h1>
-      <p className="text-base opacity-70 md:text-lg">—— 一位工程师的梦</p>
+      <p className="text-base opacity-70 md:text-lg">—— 工程师竟与妻子“灵魂互换”</p>
       <button
         type="button"
         onClick={onStart}
@@ -26,7 +26,7 @@ export function TitleScreen({ onStart }: Props) {
       >
         开始
       </button>
-      <p className="absolute bottom-8 text-xs opacity-40">建议佩戴耳机 · 全程约 6–8 分钟</p>
+      <p className="absolute bottom-8 text-xs opacity-40">建议佩戴耳机 · 全程约 5–6 分钟</p>
     </div>
   );
 }

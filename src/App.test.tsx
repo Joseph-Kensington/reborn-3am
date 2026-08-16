@@ -9,7 +9,7 @@ describe('App 主链路', () => {
     render(<App />);
     expect(screen.getByText('重生之我在凌晨三点奶娃娃')).toBeInTheDocument();
     await user.click(screen.getByRole('button', { name: '开始' }));
-    expect(screen.getByText(/晚上 11 点，陈俊生加班回到家/)).toBeInTheDocument();
+    expect(screen.getByText(/晚上 11 点，工程师陈俊生加班回到家/)).toBeInTheDocument();
   });
 
   it('narration 节点点击"继续"推进到选项节点', async () => {
@@ -17,7 +17,7 @@ describe('App 主链路', () => {
     render(<App />);
     await user.click(screen.getByRole('button', { name: '开始' }));
     await user.click(screen.getByRole('button', { name: '继续' }));
-    expect(screen.getByText('他看着那盆零件。')).toBeInTheDocument();
+    expect(screen.getByText('陈俊生看着那盆用过的吸奶器零件。')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /假装没看见/ })).toBeInTheDocument();
   });
 

@@ -11,23 +11,23 @@ export const script: Script = {
     id: 'a1-n1',
     scene: 'bedroom-night',
     type: 'narration',
-    text: '晚上 11 点，陈俊生加班回到家。\n妻子罗子君已经睡了。产后第四个月，她瘦了一圈。\n床头放着吸奶器。水盆里，泡着拆开的零件。',
+    text: '晚上 11 点，工程师陈俊生加班回到家。\n妻子罗子君已经睡了。产后第四个月，她瘦了一圈。\n床头放着吸奶器。水盆里，泡着拆开的零件。',
     next: 'a1-n2',
   },
   'a1-n2': {
     id: 'a1-n2',
     scene: 'bedroom-night',
     type: 'choice',
-    text: '他看着那盆零件。',
+    text: '陈俊生看着那盆用过的吸奶器零件。',
     choices: [
       {
         label: '假装没看见，躺床上直接睡觉',
-        feedback: '他把水盆往桌子底下推了推，像推开一件和自己无关的事。',
+        feedback: '你把水盆往桌子底下推了推，像推开一件和自己无关的事。',
         next: 'a1-n3',
       },
       {
         label: '帮妻子认认真真洗干净每个零件，到凌晨 1 点才睡',
-        feedback: '他洗完 6 个零件，颇有成就感地睡了。\n他不知道，这只是她每天的六分之一。',
+        feedback: '你洗完 6 个零件，颇有成就感地睡了。\n你不知道，这只是罗子君每天在家带娃微不足道的一部分。',
         next: 'a1-n3',
       },
     ],
@@ -48,29 +48,29 @@ export const script: Script = {
     id: 'a1-n3-s',
     scene: 'bedroom-night',
     type: 'narration',
-    text: '你赶在子君翻身前挂断了。\n呼——',
+    text: '你吓了一身冷汗，好在赶在子君翻身前挂断了。\n呼——',
     next: 'a1-n4',
   },
   'a1-n3-f': {
     id: 'a1-n3-f',
     scene: 'bedroom-night',
     type: 'narration',
-    text: '子君迷迷糊糊地问："谁啊，这么晚？"\n"……打错了。"\n她翻了个身，又睡了。你盯着天花板，很久。',
+    text: '子君迷迷糊糊地问："谁啊，这么晚？"\n你吓了一身冷汗，漫不经心地回答"……打错了。"\n子君翻了个身，又睡了。\n你盯着天花板，很久。',
     next: 'a1-n4',
   },
   'a1-n4': {
     id: 'a1-n4',
     scene: 'bedroom-night',
     type: 'choice',
-    text: '凌晨 3 点，闹钟响了。\n子君轻手轻脚地起床，摸黑拿起了吸奶器。',
+    text: '凌晨 3 点，罗子君的闹钟响了，你也被吵醒，心中有种怒气。\n子君轻手轻脚地起床，摸黑拿起了吸奶器。',
     choices: [
       {
-        label: '被惊醒，但太疲惫，说："你自己弄吧……"',
+        label: '被惊醒，但太疲惫，说："你自己弄吧，我就不帮你了..."',
         feedback: '她"嗯"了一声，声音里听不出情绪。',
         next: 'a1-n5',
       },
       {
-        label: '什么都不说，继续装睡',
+        label: '被惊醒，但什么都不说，继续装睡',
         feedback: '她一个人走进了黑暗里。你听着她摸索的声音。',
         next: 'a1-n5',
       },
@@ -80,7 +80,7 @@ export const script: Script = {
     id: 'a1-n5',
     scene: 'bedroom-night',
     type: 'narration',
-    text: '你沉沉睡去。\n然后，你做了一个梦。',
+    text: '终于，你沉沉睡去。\n然后，你做了一个梦。',
     next: 'a2-s1-n1',
   },
 
@@ -96,17 +96,17 @@ export const script: Script = {
     id: 'a2-s1-n2',
     scene: 'bedtail-3am',
     type: 'choice',
-    text: '选哪个档位？',
+    text: '你的奶阵来了，吸奶器应该选哪个档位？',
     choices: [
       {
         label: '标准档——吸得干净，但声音大',
-        feedback: '嗡嗡声在夜里格外清楚。十分钟后，宝宝哭了。\n你拔掉吸奶器去哄，奶洒了一点在衣服上。哄睡回来，一切重来。',
+        feedback: '嗡嗡声在夜里格外清楚。十分钟后，宝宝哭了。\n你拔掉吸奶器去哄，奶洒了一点在衣服上。\n好不容易把宝宝哄睡了，接着又回来吸奶，但这一次乳头开始微微隐痛...',
         effects: { fatigue: 2 },
         next: 'a2-s2-n1',
       },
       {
         label: '静音档——安静，但吸不干净',
-        feedback: '你盯着天花板，坐了三十分钟。\nAPP 显示：60ml。昨天这个时候是 90ml。\n你盯着那个数字，心一点一点往下沉。',
+        feedback: '你盯着天花板，坐了三十分钟。\nAPP 显示：60ml。昨天这个时候是 90ml。\n你盯着那个数字，心一点一点往下沉，焦虑...',
         effects: { fatigue: 1 },
         next: 'a2-s2-n1',
       },
@@ -123,17 +123,17 @@ export const script: Script = {
     id: 'a2-s2-n2',
     scene: 'morning-pain',
     type: 'choice',
-    text: '疼痛没有停。怎么办？',
+    text: '乳房的疼痛没有停，疼得甚至想要“切割”掉乳房。怎么办？',
     choices: [
       {
-        label: '忍着继续——宝宝等着吃',
+        label: '忍着继续——宝宝还饿着',
         feedback: '二十分钟，每一秒都像二十分钟那么长。\n疼痛让奶阵出不来，吸出来的比平时更少。',
         effects: { pain: 2, fatigue: 1 },
         next: 'a2-s3-n1',
       },
       {
         label: '停下来，翻说明书',
-        feedback: '说明书第 14 页：喇叭罩需要按尺寸选择。\n你找来软尺量了——你需要的尺寸，家里没有。\n下单。配件到货要三天。\n这三天，只能继续疼。',
+        feedback: '说明书第 14 页：喇叭罩需要按尺寸选择。\n你找来软尺量了——你需要的尺寸，家里没有。\n下单。配件到货要1~2天。\n眼下，只能继续疼。',
         effects: { pain: 1 },
         next: 'a2-s3-n1',
       },
@@ -143,7 +143,7 @@ export const script: Script = {
     id: 'a2-s3-n1',
     scene: 'wash-loop',
     type: 'choice',
-    text: '上午 10 点，泵完奶。\n法兰、阀门、隔膜、奶杯、导管、底座——6 个零件等着洗。',
+    text: '上午 10 点，又泵完了一次奶。\n法兰、阀门、隔膜、奶杯、导管、底座——6 个吸奶器零件等着洗。',
     choices: [
       {
         label: '拆开，清洗，消毒，晾干',
@@ -175,7 +175,7 @@ export const script: Script = {
     choices: [
       {
         label: '……再洗一遍',
-        feedback: '第 3 遍。\n这就烦了？\n她每天要重复 6 次。',
+        feedback: '第 3 遍。\n这就烦了？\n罗子君每天要重复 6 次。',
         effects: { fatigue: 1 },
         next: 'a2-s4-n1',
       },
@@ -185,7 +185,7 @@ export const script: Script = {
     id: 'a2-s4-n1',
     scene: 'night-alarm',
     type: 'narration',
-    text: '深夜 11 点，最后一次。\n你靠在床头，累到连抬手的力气都没有。\n你拿起手机，设好明天凌晨 3:00 的闹钟。\n屏幕的光照在脸上。\n明天，会和今天一模一样。',
+    text: '深夜 11 点，最后一次。\n你靠在床头，累到连抬手的力气都没有。\n你拿起手机，再次设好明天凌晨 3:00 的闹钟。\n屏幕的光照在脸上。\n明天，你的24H仍然以宝宝为中心而运转，会和今天一模一样的疲惫么？',
     next: 'a3-n1',
   },
 
@@ -205,7 +205,7 @@ export const script: Script = {
     choices: [
       {
         label: '轻轻走过去',
-        feedback: '你走过去，在她身边坐下。\n没有说话。\n她也没有。',
+        feedback: '你走过去，在她身边坐下，你摸了摸罗子君的头发，就那么陪着她\n你没有说话。\n她也没有。',
         next: 'a3-n3',
       },
     ],
@@ -220,7 +220,7 @@ export const script: Script = {
       '一次拆洗 6 个零件 × 每天 6 次 = 36 次',
       '53% 的用户把静音列为购买吸奶器的第一指标',
       '喇叭罩尺寸不合适是疼痛的首要原因，多数妈妈不知道需要测量',
-      '她经历的每一天，对他只是一场梦。',
+      '每个“罗子君”经历的一天，对“陈俊生”而言，都只是一场梦。',
     ],
     next: 'a3-n4',
   },
@@ -228,6 +228,6 @@ export const script: Script = {
     id: 'a3-n4',
     scene: 'datacard',
     type: 'end',
-    text: '愿每一个她，都被看见。\n—— 谨以此 demo，献给我们产品的每一位用户',
+    text: '愿每一个哺乳期妈妈，都被看见。\n—— 谨以此 demo，献给Momcozy吸奶器产品线的每一位同学\n你们的工作让每一个“爱你”或“你爱”的女孩幸福',
   },
 };
