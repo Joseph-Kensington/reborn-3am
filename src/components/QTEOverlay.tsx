@@ -34,9 +34,10 @@ export function QTEOverlay({ node, onResult }: Props) {
     <div
       className="flex h-full flex-col items-center justify-center px-6"
       style={{
-        backgroundImage: `url(/images/${node.scene}.png), ${gradient}`,
-        backgroundSize: 'cover, cover',
-        backgroundPosition: 'center, center',
+        backgroundImage: `url(/images/${node.scene}.png)`,
+        backgroundColor: gradient,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       <div

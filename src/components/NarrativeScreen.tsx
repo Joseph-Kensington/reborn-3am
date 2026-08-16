@@ -20,9 +20,10 @@ export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: 
     <div
       className="relative flex h-full flex-col items-center justify-center px-6"
       style={{
-        backgroundImage: `url(/images/${node.scene}.png), ${gradient}`,
-        backgroundSize: 'cover, cover',
-        backgroundPosition: 'center, center',
+        backgroundImage: `url(/images/${node.scene}.png)`,
+        backgroundColor: gradient,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
       }}
     >
       {/* 疲惫暗角：疲惫值越高越重 */}
