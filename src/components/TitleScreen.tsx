@@ -1,13 +1,17 @@
+import { usePortrait } from '../hooks/usePortrait';
+import { sceneImage } from '../data/scenes';
+
 interface Props {
   onStart: () => void;
 }
 
 export function TitleScreen({ onStart }: Props) {
+  const portrait = usePortrait();
   return (
     <div
       className="relative flex h-full flex-col items-center justify-center gap-8 bg-[#0b0b10] px-6 text-center"
       style={{
-        backgroundImage: 'url(/images/title.png), linear-gradient(180deg,#0b0b10,#000)',
+        backgroundImage: `url(${sceneImage('title', portrait)}), linear-gradient(180deg,#0b0b10,#000)`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
       }}

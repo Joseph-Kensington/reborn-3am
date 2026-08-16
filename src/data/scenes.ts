@@ -24,3 +24,8 @@ export const SCENE_GRADIENT: Record<SceneId, string> = {
   wakeup: '#060500',
   datacard: '#000000',
 };
+
+/** 场景插画路径：竖屏（手机竖持）用 9:16 竖版 JPG，其余用横版 PNG */
+export function sceneImage(scene: string, portrait: boolean): string {
+  return portrait ? `/images/portrait/${scene}.jpg` : `/images/${scene}.png`;
+}

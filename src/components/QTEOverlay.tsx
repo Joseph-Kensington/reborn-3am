@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { GameNode } from '../engine/types';
-import { SCENE_GRADIENT, type SceneId } from '../data/scenes';
+import { SCENE_GRADIENT, sceneImage, type SceneId } from '../data/scenes';
+import { usePortrait } from '../hooks/usePortrait';
 
 interface Props {
   node: GameNode;
@@ -12,6 +13,7 @@ export function QTEOverlay({ node, onResult }: Props) {
   const firedRef = useRef(false);
   const [shaking, setShaking] = useState(true);
   const gradient = SCENE_GRADIENT[node.scene as SceneId] ?? SCENE_GRADIENT['bedroom-night'];
+  const portrait = usePortrait();
 
   useEffect(() => {
     const timer = window.setTimeout(() => {
@@ -34,7 +36,7 @@ export function QTEOverlay({ node, onResult }: Props) {
     <div
       className="flex h-full flex-col items-center justify-center px-6"
       style={{
-        backgroundImage: `url(/images/${node.scene}.png)`,
+        backgroundImage: `url(${sceneImage(node.scene, portrait)})`,
         backgroundColor: gradient,
         backgroundSize: 'cover',
         backgroundPosition: 'center',

@@ -1,5 +1,6 @@
 import type { GameNode, Stats } from '../engine/types';
-import { SCENE_GRADIENT, type SceneId } from '../data/scenes';
+import { SCENE_GRADIENT, sceneImage, type SceneId } from '../data/scenes';
+import { usePortrait } from '../hooks/usePortrait';
 import { ChoiceButtons } from './ChoiceButtons';
 import { computeAtmosphere } from '../engine/atmosphere';
 
@@ -13,6 +14,7 @@ interface Props {
 
 export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: Props) {
   const gradient = SCENE_GRADIENT[node.scene as SceneId] ?? SCENE_GRADIENT['bedroom-night'];
+  const portrait = usePortrait();
   const { vignette, tremor } = computeAtmosphere(stats, node);
   const shownText = feedback ?? node.text;
 
@@ -20,7 +22,7 @@ export function NarrativeScreen({ node, stats, feedback, onAdvance, onChoose }: 
     <div
       className="relative flex h-full flex-col items-center justify-center px-6"
       style={{
-        backgroundImage: `url(/images/${node.scene}.png)`,
+        backgroundImage: `url(${sceneImage(node.scene, portrait)})`,
         backgroundColor: gradient,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
