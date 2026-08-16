@@ -59,12 +59,14 @@ docs/superpowers/plans/       # 实施计划（11 任务，已全部完成）
 
 可选扩展（未做）：更多场景/过场图、结束页配图、手机竖屏专用裁切。扩图时复用 `docs/style-samples/prompts.md` 里的画风C提示词公式（画风前缀 + 场景内容），**必须串行生成**（并行触发 HTTP 424）。
 
-### 声音（未启动）
+### 声音（✅ 已完成 · 2026-08-16，git 1ad9126）
 
-- 用 `audio_generation` 插件（中文 TTS 音色 + 自定义音效）
-- 浏览器自动播放限制：必须在首次用户点击后才能出声；默认无声可完整通关（spec 非目标条款）
-- 建议音效清单：凌晨闹钟、婴儿啼哭、泵奶器低鸣（标准档大/静音档小）、深夜环境底噪
-- 建议接入：`config.ts` 加 `AUDIO_ENABLED` 开关；`GameNode` 可扩展 `sfx?: string` 字段；App 层做 AudioManager 按场景切换
+- 5 个 AI 生成音效已接入 `public/audio/`：alarm / baby-cry / pump-standard / pump-silent / night-ambience
+- 架构：`config.ts` 有 `AUDIO_ENABLED` 开关（默认 true）；`src/audio/sfx.ts` 为音效登记表；`AudioManager` 单例负责首击解锁（浏览器自动播放限制）、循环底声切换（600ms 淡出）、失败静默降级（无声可完整通关）
+- 剧本标注规范：`GameNode.sfx` / `Choice.sfx`（取值见 sfx.ts，`'stop'` 停当前循环）/ `Choice.feedbackSfx`（延迟跟出）；校验器会检查音效合法性
+- 当前标注：a1-n1 底噪起 / a1-n4 闹钟 / 标准档→泵声+哭声跟出 / 静音档→轻泵声 / 拆洗停泵声 / 深夜回底噪 / 数据卡淡出
+- 踩坑：jsdom 里 `HTMLMediaElement.play()` 不返回 Promise，必须经 `safePlay` 包装（否则测试环境 TypeError）
+- 可扩展：凌玲 QTE 的手机震动音效、讨论页/结束页配乐（未做）
 
 注意 `spec` 非目标：无存档、无多结局、无后端、无英文版
 
