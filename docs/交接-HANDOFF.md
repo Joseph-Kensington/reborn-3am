@@ -57,7 +57,9 @@ docs/superpowers/plans/       # 实施计划（11 任务，已全部完成）
 - 试样图、4 组画风提示词、批量生成记录与安全策略踩坑（胸部/疼痛措辞触发 403）均存档于 `docs/style-samples/`（prompts.md + contact-sheet.jpg + batch-C/）
 - 三件套已通过：36 tests / 19 nodes validate / tsc
 
-可选扩展（未做）：更多场景/过场图、结束页配图、手机竖屏专用裁切。扩图时复用 `docs/style-samples/prompts.md` 里的画风C提示词公式（画风前缀 + 场景内容），**必须串行生成**（并行触发 HTTP 424）。
+- 手机竖屏 ✅（git 72b9576）：7 张 9:16 竖版重排构图存于 `public/images/portrait/*.jpg`（1080 宽），`scenes.ts` 的 `sceneImage()` 按 `usePortrait()`（matchMedia orientation，jsdom 降级横屏）自动切换；竖版源图与提示词在 `docs/style-samples/batch-C-portrait/`
+
+可选扩展（未做）：更多场景/过场图、结束页配图、讨论页配乐。扩图时复用 `docs/style-samples/prompts.md` 里的画风C提示词公式（画风前缀 + 场景内容，竖版加"vertical portrait composition"），**必须串行生成**（并行触发 HTTP 424）；涉及胸部/疼痛的措辞会触发安全策略 403，用"手按额头"这类间接表达。
 
 ### 声音（✅ 已完成 · 2026-08-16，git 1ad9126）
 
