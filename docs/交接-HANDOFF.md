@@ -64,9 +64,9 @@ docs/superpowers/plans/       # 实施计划（11 任务，已全部完成）
 - 5 个 AI 生成音效已接入 `public/audio/`：alarm / baby-cry / pump-standard / pump-silent / night-ambience
 - 架构：`config.ts` 有 `AUDIO_ENABLED` 开关（默认 true）；`src/audio/sfx.ts` 为音效登记表；`AudioManager` 单例负责首击解锁（浏览器自动播放限制）、循环底声切换（600ms 淡出）、失败静默降级（无声可完整通关）
 - 剧本标注规范：`GameNode.sfx` / `Choice.sfx`（取值见 sfx.ts，`'stop'` 停当前循环）/ `Choice.feedbackSfx`（延迟跟出）；校验器会检查音效合法性
-- 当前标注：a1-n1 底噪起 / a1-n4 闹钟 / 标准档→泵声+哭声跟出 / 静音档→轻泵声 / 拆洗停泵声 / 深夜回底噪 / 数据卡淡出
+- 当前标注：a1-n1 底噪起 / a1-n3 凌玲来电手机震动 / a1-n4 闹钟 / 标准档→泵声+哭声跟出 / 静音档→轻泵声 / 拆洗停泵声 / 深夜回底噪 / 数据卡淡出
 - 踩坑：jsdom 里 `HTMLMediaElement.play()` 不返回 Promise，必须经 `safePlay` 包装（否则测试环境 TypeError）
-- 可扩展：凌玲 QTE 的手机震动音效、讨论页/结束页配乐（未做）
+- 可扩展：讨论页/结束页配乐（未做）
 
 注意 `spec` 非目标：无存档、无多结局、无后端、无英文版
 

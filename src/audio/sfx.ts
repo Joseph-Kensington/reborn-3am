@@ -10,6 +10,7 @@ export const SFX = {
   'pump-silent': { src: '/audio/pump-silent.mp3', loop: true, volume: 0.25 },
   alarm: { src: '/audio/alarm.mp3', loop: false, volume: 0.7 },
   'baby-cry': { src: '/audio/baby-cry.mp3', loop: false, volume: 0.6 },
+  'phone-vibrate': { src: '/audio/phone-vibrate.mp3', loop: false, volume: 0.7 },
 } as const;
 
 export type SfxId = keyof typeof SFX;

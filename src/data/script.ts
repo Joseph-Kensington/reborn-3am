@@ -39,6 +39,7 @@ export const script: Script = {
     id: 'a1-n3',
     scene: 'bedroom-night',
     type: 'qte',
+    sfx: 'phone-vibrate',
     text: '凌晨 1 点半，手机在床头柜上震动起来。\n屏幕亮着两个字：凌玲。',
     qte: {
       timeoutMs: 2500,
