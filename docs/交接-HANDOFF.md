@@ -16,6 +16,14 @@
 - **铁律：任何临时 dev server 用完必须 kill，不留后台进程**
 - 三件套验证：`npm test`（36 个用例）+ `npm run validate`（剧情图校验：19 节点）+ `npx tsc --noEmit`
 
+## 公网部署（GitHub Pages，2026-08-18 上线）
+
+- 线上地址：**https://joseph-kensington.github.io/reborn-3am/**（公开仓库，任何人可玩）
+- 仓库：https://github.com/Joseph-Kensington/reborn-3am（main = 源码，gh-pages = 构建产物）
+- 部署适配：vite 构建用相对 base（`./`），图片/音频路径经 `import.meta.env.BASE_URL` 自适应子路径
+- 重新部署流程：改完代码跑三件套 → 提交推 main → `npm run build` → `cd dist && git init -q -b gh-pages && git add -A && git commit -q -m "deploy" && git push -f https://github.com/Joseph-Kensington/reborn-3am.git gh-pages`（gh-pages 分支推送后 Pages 自动重新构建，约 1 分钟生效）
+- 注意：`npx gh-pages` 在本机超时不可用，用上面的手工 dist 推送法；gh 二进制在 `workspace/.tools/gh`
+
 ## 架构速览（剧本即数据）
 
 ```
