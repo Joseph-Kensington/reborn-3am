@@ -25,7 +25,8 @@ export const SCENE_GRADIENT: Record<SceneId, string> = {
   datacard: '#000000',
 };
 
-/** 场景插画路径：竖屏（手机竖持）用 9:16 竖版 JPG，其余用横版 PNG */
+/** 场景插画路径：竖屏（手机竖持）用 9:16 竖版 JPG，其余用横版 PNG；前缀随部署 base 自适应 */
 export function sceneImage(scene: string, portrait: boolean): string {
-  return portrait ? `/images/portrait/${scene}.jpg` : `/images/${scene}.png`;
+  const base = import.meta.env.BASE_URL;
+  return portrait ? `${base}images/portrait/${scene}.jpg` : `${base}images/${scene}.png`;
 }
