@@ -5,7 +5,8 @@
  * 特殊引用 'stop'：停止当前循环（本身不是登记音效）。
  * src 前缀随部署 base 自适应（子路径部署如 GitHub Pages 也能命中）。
  */
-const BASE = import.meta.env.BASE_URL;
+// vite 注入 import.meta.env；tsx 直跑（npm run validate）时 env 为 undefined，回退 '/'
+const BASE = import.meta.env?.BASE_URL ?? '/';
 
 export const SFX = {
   'night-ambience': { src: `${BASE}audio/night-ambience.mp3`, loop: true, volume: 0.35 },
