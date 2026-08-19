@@ -145,6 +145,11 @@ export const script: Script = {
         effects: { pain: 1 },
         next: 'a2-s3-n1',
       },
+      {
+        label: '今天晚上先暂时不再进行吸奶',
+        feedback: '你决定叫醒老公，和他商量下怎么办',
+        next: 'a2-s3-n1',
+      },
     ],
   },
   'a2-s3-n1': {
