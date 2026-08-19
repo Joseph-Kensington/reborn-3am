@@ -29,3 +29,9 @@ Minimalist flat vector illustration, 3 AM bedroom: a young mother silhouette sit
   - 7 张统一裁掉底部 90px 去水印（2048×1062），已覆盖 `public/images/`
   - 三件套通过：36 tests / 19 nodes validate / tsc
   - 画风C场景提示词公式：画风前缀（见上方 C 段）+ 各场景内容；清晨场景把暖光换成冷白 accent
+- 2026-08-19 用户改选 **画风 D（极简扁平剪影）**，全量重生完成：
+  - `batch-D/` 横版 7 张（2K 16:9 → 裁水印 → 2048×1078 PNG）、`batch-D-portrait/` 竖版 7 张（4K 9:16 → 裁水印 → 1080 宽 JPG），已覆盖 `public/images/` 与 `public/images/portrait/`
+  - 全部 14 张生成时以 `D-flat.png` 试样为参考图（`--reference-image`，先 `image-to-url` 上传），风格一致性显著优于无参考
+  - 场景内容描述沿用 C 版构图（标题=唯一暖窗公寓楼 / bedroom-night=丈夫拎包站门口 / bedtail-3am=床尾泵奶 / morning-pain=手按额头冷白清晨 / wash-loop=水槽洗零件晾架 / night-alarm=手机亮光照脸 / wakeup=丈夫前景背影望泵奶剪影）
+  - **新踩坑**：亮调场景（morning-pain 竖版）会让水印检测误判亮部内容，固定裁 3722px 高度（与暗调图检测值一致）更稳；morning-pain 措辞用 "hand pressed to forehead" 安全通过
+  - `scenes.ts` 兜底色改为各图四角平均色（深蓝近黑基调）；三件套通过：36 tests / 19 nodes validate / tsc

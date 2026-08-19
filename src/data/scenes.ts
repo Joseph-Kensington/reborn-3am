@@ -13,15 +13,15 @@ export type SceneId = (typeof SCENES)[number];
 /**
  * 场景底色（平涂，无渐变——电影感纪律）；
  * Task 10 接入插画后作为图片下层兜底。
- * 色阶来自参照palette的明暗梯：#060500 / #0a0a00 / #0f0f0f。
+ * 2026-08-19 画风 D 批次：色值取自各图四角平均色（深蓝近黑基调）。
  */
 export const SCENE_GRADIENT: Record<SceneId, string> = {
-  'bedroom-night': '#0a0a00',
-  'bedtail-3am': '#060500',
-  'morning-pain': '#0f0f0f',
-  'wash-loop': '#0a0a00',
-  'night-alarm': '#060500',
-  wakeup: '#060500',
+  'bedroom-night': '#050e1a',
+  'bedtail-3am': '#030f1d',
+  'morning-pain': '#6a788b',
+  'wash-loop': '#382f27',
+  'night-alarm': '#051223',
+  wakeup: '#0b1520',
   datacard: '#000000',
 };
 

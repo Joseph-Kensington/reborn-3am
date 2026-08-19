@@ -3,10 +3,10 @@
 > 给新对话的 AI：读这份文档即可恢复全部上下文。本项目所有事实以**本文件 + git 历史 + 代码**为准。
 > 给用户：新对话里直接发——「继续 reborn-3am 项目，先读 `reborn-3am/docs/交接-HANDOFF.md`」
 
-## 当前状态（2026-08-19）
+## 当前状态（2026-08-19，画风已切 D）
 
 **核心工作全部完成，游戏已上线公网，可直接发给同事玩。**
-画面（画风 C，横版 7 张 + 竖版 7 张）、声音（6 个音效）、手机竖屏适配、GitHub Pages 部署均已闭环；三件套（测试/校验/类型检查）长期全绿。剩余项均为可选扩展，见文末「待办」。
+画面（**画风 D · 极简扁平剪影**，横版 7 张 + 竖版 7 张；2026-08-19 由 C 改选 D 全量重生）、声音（6 个音效）、手机竖屏适配、GitHub Pages 部署均已闭环；三件套（测试/校验/类型检查）长期全绿。剩余项均为可选扩展，见文末「待办」。
 
 ## 项目是什么
 
@@ -55,8 +55,8 @@ src/
 │   └── useGameEngine.ts      # useReducer 封装
 └── components/               # TitleScreen / NarrativeScreen / ChoiceButtons / QTEOverlay / DataCardSequence / EndScreen / DiscussionPage
 scripts/validate-script.ts    # npm run validate 入口
-public/images/                # 横版 7 张 PNG（2048×1062）：title/bedroom-night/bedtail-3am/morning-pain/wash-loop/night-alarm/wakeup
-public/images/portrait/       # 竖版 7 张 JPG（1080×1855），同名
+public/images/                # 横版 7 张 PNG（2048×1078）：title/bedroom-night/bedtail-3am/morning-pain/wash-loop/night-alarm/wakeup
+public/images/portrait/       # 竖版 7 张 JPG（1080×1861 左右），同名
 public/audio/                 # 6 个 mp3：night-ambience/alarm/baby-cry/pump-standard/pump-silent/phone-vibrate
 docs/文案稿.md                # 文案唯一事实源（用户可编辑版）
 docs/style-samples/           # 画风试样、4 组画风提示词（prompts.md）、横竖版生成存档
@@ -67,7 +67,7 @@ docs/superpowers/             # 设计文档 + 实施计划（11 任务，已全
 
 - 视觉 token：近黑平涂 `#0a0a00/#0f0f0f` + 纯白文字 + 唯一交互强调色 `#3898ec`；全屏胶片颗粒层（.film-grain，CSS SVG 噪点 + steps 抖动）；**三声部字体**：叙事宋体(.font-narrative) / UI 黑体 / 数据等宽(.font-data)；中文禁斜体；动效只用透明度交叉淡化
 - 状态值无形化：不显示数值条，疲惫值越高暗角越重，疼痛值 ≥2 且 morning-pain 场景触发微颤
-- 插画风格（2026-08-16 用户重选定稿，取代早期"水彩×胶片"）：**画风 C · 黑白图像小说**——高对比黑白线条 + 唯一暖色光、暗调、极简构图、no text；横版 `url(...png)` + 竖版 `portrait/*.jpg` 经 `sceneImage()` 接入，平涂底色用 `backgroundColor` 兜底
+- 插画风格（2026-08-19 用户改选，取代 2026-08-16 的 C）：**画风 D · 极简扁平剪影**——大色块扁平矢量、深蓝近黑底 + 唯一暖黄光、极简构图、no text；横版 `url(...png)` + 竖版 `portrait/*.jpg` 经 `sceneImage()` 接入，兜底色为各图四角平均色（深蓝近黑基调）
 - 结局数据卡 5 张文案与"罗子君/陈俊生"点题句为定稿（有测试锚点锁定）
 - 用户改文案工作流：用户编辑 `docs/文案稿.md` → AI 同步进 `script.ts`/`TitleScreen.tsx`/`config.ts` → 同步更新测试锚点 → 跑三件套 → 提交
 
@@ -80,6 +80,17 @@ docs/superpowers/             # 设计文档 + 实施计划（11 任务，已全
 - **踩坑 1**：曾全部场景黑屏——`SCENE_GRADIENT` 纯色被拼进 `background-image` 致整条声明被浏览器丢弃（修复 7b17c71：url 与底色分离）
 - **踩坑 2**：图像生成服务自动叠水印，提示词写 no watermark 无效，只能裁掉；**必须串行生成**（并行触发 HTTP 424）；胸部/疼痛措辞触发 403（改用"手按额头"类间接表达）
 - 试样与提示词公式存档 `docs/style-samples/`（prompts.md 是复用入口）
+
+### 画面换 D（2026-08-19）
+
+- 用户改选 **D（极简扁平剪影）**；14 张全量重生：横版 2K 16:9→裁水印→2048×1078 PNG，竖版 4K 9:16→裁水印→1080 宽 JPG
+- 本次起全部以 D-flat.png 试样为 `--reference-image` 参考图生成，风格一致性显著提升
+- **新踩坑**：亮调场景（morning-pain）会让水印自动检测误判亮部，竖版固定裁 3722px 高度最稳
+- 场景内容描述沿用 C 版构图逐张翻译为 D 提示词（公式见 prompts.md）；`scenes.ts` 兜底色同步改为各图四角平均色
+
+### 文案（2026-08-19，git 220e9a5）
+
+- 场景②喇叭罩尺寸（a2-s2-n2）新增选项 3「今天晚上先暂时不再进行吸奶」→ 反馈「你决定叫醒老公，和他商量下怎么办」，无状态效果，汇合 a2-s3-n1
 
 ### 声音（2026-08-16，git 1ad9126 / 3e1ce3d）
 
